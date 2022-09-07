@@ -1,0 +1,207 @@
+// Local docs variables
+$bd-purple:        #4c0bce;
+$bd-violet:        lighten(saturate($bd-purple, 5%), 15%); // stylelint-disable-line function-disallowed-list
+$bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%); // stylelint-disable-line function-disallowed-list
+$bd-accent:       #ffe484;
+$dropdown-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#292b2c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>");
+
+$bd-gutter-x: 3rem;
+$bd-callout-variants: info, warning, danger !default;
+
+.bd-gutter {
+--bs-gutter-x: #{$bd-gutter-x};
+}
+
+.bd-layout {
+
+@include media-breakpoint-up(lg) {
+    display: grid;
+    grid-template-areas: "sidebar main";
+    grid-template-columns: 1fr 5fr;
+    gap: $grid-gutter-width;
+}
+}
+
+.bd-sidebar {
+grid-area: sidebar;
+}
+
+.bd-main {
+grid-area: main;
+
+@include media-breakpoint-down(lg) {
+    max-width: 760px;
+    margin-inline: auto;
+}
+
+@include media-breakpoint-up(md) {
+    display: grid;
+    grid-template-areas:
+    "intro"
+    "toc"
+    "content";
+    grid-template-rows: auto auto 1fr;
+    gap: inherit;
+}
+
+@include media-breakpoint-up(lg) {
+    grid-template-areas:
+    "intro   toc"
+    "content toc";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 4fr 1fr;
+}
+}
+
+.bd-intro {
+grid-area: intro;
+}
+
+.bd-toc {
+grid-area: toc;
+}
+
+.bd-content {
+grid-area: content;
+min-width: 1px; // Fix width when bd-content contains a `<pre>` https://github.com/twbs/bootstrap/issues/25410
+}
+
+.bd-sidebar {
+    @include media-breakpoint-up(lg) {
+      position: sticky;
+      top: 5rem;
+      // Override collapse behaviors
+      // stylelint-disable-next-line declaration-no-important
+      display: block !important;
+      height: subtract(100vh, 6rem);
+      // Prevent focus styles to be cut off:
+      padding-left: .25rem;
+      margin-left: -.25rem;
+      overflow-y: auto;
+    }
+  }
+  
+  .bd-links-nav {
+    @include media-breakpoint-down(lg) {
+      font-size: .875rem;
+    }
+  
+    @include media-breakpoint-between(xs, lg) {
+      column-count: 2;
+      column-gap: 1.5rem;
+  
+      .bd-links-group {
+        break-inside: avoid;
+      }
+  
+      .bd-links-span-all {
+        column-span: all;
+      }
+    }
+  }
+  
+  .bd-links-link {
+    padding: .1875rem .5rem;
+    margin-top: .125rem;
+    margin-left: 1rem;
+    color: rgba($black, .65);
+    text-decoration: if($link-decoration == none, null, none);
+  
+    &:hover,
+    &:focus,
+    &.active {
+      color: rgba($black, .85);
+      text-decoration: if($link-hover-decoration == underline, none, null);
+      background-color: rgba(var(--bd-violet-rgb), .1);
+    }
+  
+    &.active {
+      font-weight: 600;
+    }
+  }
+
+  .bd-toc {
+    @include media-breakpoint-up(lg) {
+      position: sticky;
+      top: 5rem;
+      right: 0;
+      z-index: 2;
+      height: subtract(100vh, 7rem);
+      overflow-y: auto;
+    }
+  
+    nav {
+      @include font-size(.875rem);
+  
+      ul {
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+  
+        ul {
+          padding-left: 1rem;
+          margin-top: .25rem;
+        }
+      }
+  
+      li {
+        margin-bottom: .25rem;
+      }
+  
+      a {
+        color: inherit;
+  
+        &:not(:hover) {
+          text-decoration: none;
+        }
+  
+        code {
+          font: inherit;
+        }
+      }
+    }
+  }
+  
+  .bd-toc-toggle {
+    display: flex;
+    align-items: center;
+  
+    @include media-breakpoint-down(sm) {
+      justify-content: space-between;
+      width: 100%;
+    }
+  
+    @include media-breakpoint-down(md) {
+      border: 1px solid $border-color;
+      @include border-radius(.4rem);
+  
+      &:hover,
+      &:focus,
+      &:active,
+      &[aria-expanded="true"] {
+        color: var(--bd-violet);
+        background-color: $white;
+        border-color: var(--bd-violet);
+      }
+  
+      &:focus,
+      &[aria-expanded="true"] {
+        box-shadow: 0 0 0 3px rgba(var(--bd-violet-rgb), .25);
+      }
+    }
+  }
+  
+  .bd-toc-collapse {
+    @include media-breakpoint-down(md) {
+      nav {
+        padding: 1.25rem;
+        background-color: var(--bs-gray-100);
+        border: 1px solid $border-color;
+        @include border-radius(.25rem);
+      }
+    }
+  
+    @include media-breakpoint-up(md) {
+      display: block !important; // stylelint-disable-line declaration-no-important
+    }
+  }

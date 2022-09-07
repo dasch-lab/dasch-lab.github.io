@@ -1,0 +1,16 @@
+.field{
+
+	margin-bottom: 0.25em;
+	>.field-label, >.field-item{
+		display: inline;
+	}
+
+	>.field-label{
+		color: $color-blue-1;
+		font-weight: 600;
+	}
+
+	>.field-item{
+
+	}
+}

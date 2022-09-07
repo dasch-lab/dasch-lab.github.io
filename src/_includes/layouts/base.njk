@@ -1,0 +1,164 @@
+
+{#- Set some variables -#}
+{%- set cookieMessage = 'This site uses cookies - please read our cookie policy.' -%} 
+
+<!DOCTYPE html>
+<html lang="it" xmlns="http://www.w3.org/1999/xhtml" class="scrolled-to-top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="{{ description }}" />
+    {# <meta property="og:image" content="{{ '/assets/images/bacteriophage01_small.jpg'|url }}" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="356" />
+    <meta property="og:image:height" content="200" />
+    <meta property="og:description" content="{{ description }}" /> #}
+
+    <title>DaScH-Lab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet" />
+
+    {# <link rel="shortcut icon" href="{{ '/assets/favicons/favicon.ico'|url }}" /> #}
+
+    {# Core stylesheet #}
+    <link href="{{ manifest.css.main|url }}" rel="stylesheet" />
+    <link href="{{ manifest.css.cookieconsent|url }}" rel="stylesheet" />
+
+  </head>
+
+  <body>
+
+    {#- Navigation menu -#}
+    <header class='header' id='header'>
+      <div class='wrapper'>
+        <a href="{{ '/'|url }}" class='logo'>
+          <h1>DaScH Lab</h1>
+        </a>
+        <div class='menu'>
+          <div class="toggle">
+            <span>
+              <span></span>
+            </span>
+          </div>
+          <ul>
+            <li class='item'><a href="{{ '/'|url }}">Home</a></li>
+            <li class='item'><a href="{{ '/docs/'|url }}">Docs</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+
+    <div id="content">
+      
+    {# Page content #}
+    {% block content %}
+        {{- content | safe -}}
+    {% endblock %}
+
+    </div>
+
+    {#- Include aggregated scripts -#}
+    <script defer="defer" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script defer src="{{ manifest.js.cookieconsent|url }}"></script>
+
+    <script type="text/javascript">
+
+      {# https://tympanus.net/Freebies/scribbler/doc.html #}
+      window.addEventListener("load", function(){
+
+        {#- Toggle navigation -#}
+        {# $('.menu > .toggle').on('click', function(e){
+          $('.menu').toggleClass('open');
+        }); #}
+
+        {# Initialize cookies #}
+        var cc = initCookieConsent();
+        cc.run({
+          current_lang: 'it',
+          autoclear_cookies: true,                   // default: false
+          page_scripts: true,                        // default: false
+          cookie_name: 'fagoterapialab',               // default: 'cc_cookie'
+          languages: {
+            'it': {
+              consent_modal: {
+                title: 'Utilizzo cookies',
+                description: 'Questo sito utilizza cookie essenziali per garantire il corretto funzionamento, e cookie di tracciamento per capire come interagisci con esso. Questi ultimi saranno attivati solo previo consenso. <button type="button" data-cc="c-settings" class="cc-link">Fammi scegliere</button>',
+                primary_btn: {
+                  text: 'Accetta tutto',  
+                  role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                },
+                secondary_btn: {
+                  text: 'Rifiuta tutto',
+                  role: 'accept_necessary'        // 'settings' or 'accept_necessary'
+                }
+              },
+              settings_modal: {
+                title: 'Preferenze cookies',
+                save_settings_btn: 'Save settings',
+                accept_all_btn: 'Accept all',
+                reject_all_btn: 'Reject all',
+                close_btn_label: 'Close',
+                cookie_table_headers: [
+                  {col1: 'Name'},
+                  {col2: 'Domain'},
+                  {col3: 'Expiration'},
+                  {col4: 'Description'}
+                ],
+                  blocks: [
+                    {
+                      title: 'Utilizzo cookies 📢',
+                      description: 'Utilizziamo i cookie per garantire le funzionalità di base del sito Web e per migliorare la tua esperienza online. Puoi scegliere per ciascuna categoria di aderire/rifiutare quando vuoi. Per maggiori dettagli relativi a cookie e altri dati sensibili, si prega di leggere la <a href="{{ '/privacy/'|url }}" class="cc-link">informativa sulla privacy</a> completa.'
+                    }, {
+                      title: 'Cookie strettamente necessari',
+                      description: 'Questi cookie sono essenziali per il corretto funzionamento del sito web. Senza questi cookie, il sito web non funzionerebbe correttamente',
+                      toggle: {
+                        value: 'necessary',
+                        enabled: true,
+                        readonly: true          // cookie categories with readonly=true are all treated as "necessary cookies"
+                      }
+                    }, {
+                      title: 'Cookie di performance e analytics',
+                      description: 'Questi cookie consentono al sito web di ricordare le scelte che hai fatto in passato',
+                      toggle: {
+                        value: 'analytics',     // your cookie category
+                        enabled: false,
+                        readonly: false
+                      },
+                      cookie_table: [             // list of all expected cookies
+                        {
+                          col1: '^_ga',       // match all cookies starting with "_ga"
+                          col2: 'google.com',
+                          col3: '2 years',
+                          col4: 'description ...',
+                          is_regex: true
+                        },
+                        {
+                          col1: '_gid',
+                          col2: 'google.com',
+                          col3: '1 day',
+                          col4: 'description ...',
+                        }
+                      ]
+                      }, {
+                        title: 'Cookie pubblicitari e di targeting',
+                        description: 'Questi cookie raccolgono informazioni su come utilizzi il sito web, quali pagine hai visitato e quali link hai cliccato. Tutti i dati sono resi anonimi e non possono essere utilizzati per identificarti',
+                        toggle: {
+                          value: 'targeting',
+                          enabled: false,
+                          readonly: false
+                        }
+                      }, {
+                        title: 'Maggiori informazioni',
+                        description: 'Per qualsiasi domanda in relazione alla nostra politica sui cookie e alle tue scelte, <a class="cc-link" href="{{ '/contatti/'|url }}">contattaci</a>.',
+                      }
+                  ]
+              }
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+// Skeleton
+// $desktop-width: 1440px;
+// $tablet-landscape-width: 960px;
+// $tablet-portrait-width: 748px;
+// $mobile-portrait-width: 280px;
+// $mobile-landscape-width: 420px;
+
+// $num-columns: 12;
+// $gutter-width: 10px;
+// $border-width: 0;
+// $class-column: 'number';
+// $class-offset: 'offset';
+
+// Sprite settings
+// $sprite-graphic-format: 'hires';
+// $sprite-graphic-file: 'sprite';
+// $sprite-graphic-type: 'png';
+// $sprite-graphic-width: 106px;
+// $sprite-graphic-height: 85px;
+
+// Colors
+$color-neutral-1: #fff;
+$color-neutral-2: #000;
+$color-neutral-3: #343741;//
+$color-neutral-4: #F4F4F4;//
+$color-neutral-5: #C8C8C8;//
+$color-neutral-6: #DCE0E0;//
+$color-neutral-7: #666666;//
+$color-neutral-8: #1E1E1E;//
+
+$color-primary-1: #D0021B;
+$color-secondary-1: #DC3545;
+
+$color-blue-1: #4A90E2;//
+$color-blue-2: #020927;
+$color-blue-3: #014EA8;//
+
+// Fonts
+$base-font-family: "Avenir Next", Arial, sans-serif;
+//$base-font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-size: 14px;
+$base-line-height: 21px;
+$rhythm-unit: 'px';
+
+// <body>
+$body-bg: white;
+$body-color: #444444;
+
+// <blockquote>
+$blockquote-color: $body-color;
+$blockquote-bg: transparent;
+$blockquote-cite-color: $body-color;
+$blockquote-cite-link-color: $body-color;
+$blockquote-border-color: $color-primary-1;
