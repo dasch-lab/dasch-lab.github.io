@@ -36,15 +36,15 @@ module.exports = function (eleventyConfig) {
 	.disable('code') // disable indent -> code block
 	.use(markdownItAnchor, {
 		slugify: markdownItSlugify,
-		level: [1,2,3,4],
-		permalink: markdownItAnchor.permalink.linkInsideHeader({
-			symbol: `
-				<span class="sr-only">Jump to heading</span>
-				<span aria-hidden="true">#</span>
-			`,
-			class: "direct-link",
-			placement: 'after'
-		})
+		level: [1,2,3,4]
+		// permalink: markdownItAnchor.permalink.linkInsideHeader({
+		// 	symbol: `
+		// 		<span class="sr-only">Jump to heading</span>
+		// 		<span aria-hidden="true">#</span>
+		// 	`,
+		// 	class: "direct-link",
+		// 	placement: 'after'
+		// })
 	})
 	.use(markdownItToc, {
 		includeLevel: [2, 3],

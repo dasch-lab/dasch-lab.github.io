@@ -1,4 +1,4 @@
-<div class="elv-toc">
+{# <div class="elv-toc">
 <details-force-state>
 	<details open>
 		<summary class="btn-primary benchnine rainbow-active rainbow-active-noanim">Menu</summary>
@@ -10,4 +10,24 @@
 
 	</details>
 </details-force-state>
-</div>
+</div> #}
+
+
+
+{% set navPages = collections.sidebarNav | eleventyNavigation %}
+
+{# The rendering macro #}
+{% macro renderNavListItem(entry) -%}
+<li{% if entry.url == page.url %} class="is-active"{% endif %}>
+  <a href="{{ entry.url }}">{{ entry.title }}</a>
+{%- if entry.children.length -%}
+  <ul class='menu-list'>
+    {%- for child in entry.children %}{{ renderNavListItem(child) }}{% endfor -%}
+  </ul>
+{%- endif -%}
+</li>
+{%- endmacro %}
+
+<ul class='menu-list'>
+{%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
+</ul>

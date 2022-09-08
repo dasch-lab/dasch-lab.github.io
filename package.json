@@ -35,7 +35,7 @@
     "slugify": "^1.6.5"
   },
   "dependencies": {
-    "bootstrap": "^5.2.0",
+    "bulma-scss": "^0.9.4",
     "dotenv-flow": "^3.2.0",
     "vanilla-cookieconsent": "^2.8.6"
   }

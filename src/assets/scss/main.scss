@@ -18,11 +18,12 @@
   // Bootstrap variables
   $enable-rounded: false;
   
-  @import "bootstrap";
+  // @import "bootstrap";
+  @import "bulma";
   
   @import "general/typography";
   @import "general/variables";
-  @import "general/navigation";
+  // @import "general/navigation";
   @import "general/cookiebar";
   @import "general/sidebar";
   
@@ -117,6 +118,10 @@
     cursor: pointer;
   }
   
+  h1 {
+    font-size: 3.0rem;
+  }
+
   h2 {
     font-size: 2.4rem;
   }

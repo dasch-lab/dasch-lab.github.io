@@ -9,7 +9,10 @@ const task = cb => {
     return gulp.src(src)
         .pipe(sass({
             outputStyle: 'compressed',
-            includePaths: ['node_modules/bootstrap/scss/']
+            includePaths: [
+                'node_modules/bootstrap/scss/',
+                'node_modules/bulma-scss/'
+            ]
         }).on('error', sass.logError))
         .pipe(gulp.dest(dest));
 };
