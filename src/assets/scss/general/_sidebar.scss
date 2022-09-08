@@ -44,7 +44,7 @@ $grid-gutter-width:           1.5rem !default;
 
 .off-sidebar {
   grid-area: sidebar;
-  min-height: calc(100vh - 3.25rem);
+  
   
   @media (min-width: $breakpoint-lg) {
     position: sticky;
@@ -62,11 +62,12 @@ $grid-gutter-width:           1.5rem !default;
   >.menu{
     
     overflow-y: auto;
-
+    min-height: calc(100vh - 3.25rem);
     @media (max-width: $breakpoint-lg) {
       visibility: hidden;
+      min-width: 250px;
       position: fixed;
-      background-color: white;
+      background-color: whitesmoke;
       z-index: 1000;
 
       &.is-active{
@@ -110,6 +111,10 @@ $grid-gutter-width:           1.5rem !default;
 
 .bd-intro {
   grid-area: intro;
+
+  > .navbar{
+    z-index: inherit;
+  }
   }
   
   .bd-toc {

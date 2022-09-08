@@ -18,16 +18,34 @@
 
 {# The rendering macro #}
 {% macro renderNavListItem(entry) -%}
-<li{% if entry.url == page.url %} class="is-active"{% endif %}>
+{# <li{% if entry.url == page.url %} class="is-active"{% endif %}>
   <a href="{{ entry.url }}">{{ entry.title }}</a>
 {%- if entry.children.length -%}
   <ul class='menu-list'>
     {%- for child in entry.children %}{{ renderNavListItem(child) }}{% endfor -%}
   </ul>
 {%- endif -%}
-</li>
+</li> #}
+{% for item in entry %}
+ {% if item.children.length %}
+	<p class="menu-label">
+		<a href="{{ item.url }}">{{ item.title }}</a>
+	</p>
+{% else %}
+	<li{% if entry.url == page.url %} class="is-active"{% endif %}>
+		<a href="{{ item.url }}">{{ item.title }}</a>
+	</li>
+{% endif %}
+{%- if item.children.length -%}
+  <ul class='menu-list'>
+    {{ renderNavListItem(item.children) }}
+  </ul>
+{%- endif -%}
+{% endfor %}
+
 {%- endmacro %}
 
-<ul class='menu-list'>
+{# <ul class='menu-list'>
 {%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
-</ul>
+</ul> #}
+{{ renderNavListItem(navPages) }}
