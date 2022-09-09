@@ -1,8 +1,8 @@
 ---
 eleventyNavigation:
-  key: 'Overview'
-  order: 1
-permalink: /docs/
+  key: 'Bioinformatics'
+  order: 2
+permalink: /docs/bioinformatics/
 ---
 
 # Overview

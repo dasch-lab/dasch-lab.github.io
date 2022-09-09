@@ -1,7 +1,7 @@
 
 /* css variables*/
 :root {
-    --primary-color: #432E30;
+    --primary-color: #da1039;
     --primary-color-light: #8E7474;
     --accent-color: #FE6A6B;
     --accent-color-light: #FFE4E4;
@@ -38,77 +38,7 @@
   table.table{
     color: var(--fg-color);
   }
-  
-  /* Additional menu elements */
-  header.header{
-    // padding-top: 1rem;
-    // background-color: white;
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-    // right: 0;
-    // z-index: 10;
-    // 
-    background: #fff;
-    box-shadow: 2px 7px 14px 0 rgba(#000, 0.11);
-    // box-shadow: 2px 7px 14px 0 rgb(0 0 0 / 11%);
-  }
-  
-  div.menu {
-      padding: 0.5rem;
-      // >ul{
-        
-      //   text-align: right;
-      // }
-    }
-  
-  /* Logo */
-  .logo{
-    
-    // width: 100%;
-    /*padding: 0.85em*/
-  
-    > h1{
-      font-weight: 900;
-      color: var(--primary-color);
-      font-size: 1.4em;
-      display: inline-block;
-    }
-  
-    > img{
-      width: 50px;
-      display: inline-block;
-    }
-  
-    // @media (max-width: 768px) {
-  
-    //   position: absolute;
-    // }
-  }
-  
-  @media (min-width: 992px) { 
-  
-    section.main-container{
-      max-width: 960px;
-    }
-  }
-  
-  /* Figures and captions */
-  .figure-caption{
-    font-weight: 100;
-    font-size: 90%;
-  }
-  
-  .block{
-    padding-top: 2em;
-    padding-bottom: 2em;
-  
-    &.gray{
-      background-color: var(--light-gray-color);
-    }
-  }
-  
-  
+
   textarea {
     font-family: "Open Sans", sans-serif;
   }
@@ -157,3 +87,11 @@
       margin: 20px auto 0;
     }
   }
+
+/* Hero */
+.hero{
+  &.is-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+}

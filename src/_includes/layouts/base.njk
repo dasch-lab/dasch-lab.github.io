@@ -70,28 +70,8 @@
       </div>
     </nav>
 
-
-    {# <header class='header' id='header'>
-      <div class='wrapper'>
-        <a href="{{ '/'|url }}" class='logo'>
-          <h1>DaScH Lab</h1>
-        </a>
-        <div class='menu'>
-          <div class="toggle">
-            <span>
-              <span></span>
-            </span>
-          </div>
-          <ul>
-            <li class='item'><a href="{{ '/'|url }}">Home</a></li>
-            <li class='item'><a href="{{ '/docs/'|url }}">Docs</a></li>
-          </ul>
-        </div>
-      </div>
-    </header> #}
-      
     {# Page content #}
-    <section id="content">
+    <section id="content" class="mt-5">
     {% block content %}
       <div class='container'>
         {{- content | safe -}}
