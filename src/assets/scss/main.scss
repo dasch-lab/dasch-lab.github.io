@@ -14,11 +14,10 @@
     --code-bg-color: #F0E8E8;
     --fg-color: #626262;
   }
+
+  $body-overflow-y: auto;
   
-  // Bootstrap variables
-  $enable-rounded: false;
-  
-  // @import "bootstrap";
+  // @import "bulma";
   @import "bulma";
   
   @import "general/typography";

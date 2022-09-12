@@ -117,9 +117,17 @@ $grid-gutter-width:           1.5rem !default;
   }
   }
   
-  .bd-toc {
+.bd-toc {
   grid-area: toc;
+  > .toc{
+    font-size: .875rem;
+    ul{
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+    }
   }
+}
 
   .bd-content {
     grid-area: content;

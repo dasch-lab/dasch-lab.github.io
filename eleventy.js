@@ -12,7 +12,10 @@ module.exports = function (eleventyConfig) {
 
   // Eleventy plugins
   eleventyConfig.addPlugin(navigation);
-  eleventyConfig.addPlugin(pluginTOC);
+  eleventyConfig.addPlugin(pluginTOC, {
+	wrapper: 'div',
+	ul: true
+  });
 
   function removeExtraText(s) {
 		let newStr = String(s).replace(/New\ in\ v\d+\.\d+\.\d+/, "");

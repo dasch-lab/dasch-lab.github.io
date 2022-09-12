@@ -4,16 +4,7 @@ eleventyNavigation:
   key: 'Genome assembly'
 ---
 
-Welcome to this choose-your-own-adventure guide for assembling a bacterial genome! It will lead you to the best (in my opinion) strategy for getting a nice whole-genome assembly, based on what kind of reads you have and what your priorities are. And unlike in the [classic book series](https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure), none of your choices will result in your untimely death!
-
-This guide is for __bacterial isolate genomes__. I have little experience with eukaryote assembly, and so my recommendations may not hold for them. Eukaryote genomes are larger, more repetitive and usually diploid/polyploid, all of which place different demands on assemblers. This guide also isn't for metagenomes, which have their own set of assembly challenges (broad ranges of read depth and closely related genomes).
-
-I have written this guide with the assumption that you already have reads for your to-be-assembled genome(s). If that's not true, check out this appendix: [what sequencing should I do?](#appendix-what-sequencing-should-i-do)
-
-Ready to begin? [Start at step 1](#1-input-reads).
-<br><br><br>
-
-
+This guidelines is specifically written for assembling bacteria genomes by using multiple tools, but mainly focussing on unicycler.
 
 ## 1: Input reads
 
@@ -22,11 +13,7 @@ What type of reads do you have?
 * Long reads (Oxford Nanopore or PacBio) only. [Go to 7](#7-long-read-qc).
 * Both short and long reads (hybrid). [Go to 15](#15-long-read-and-short-read-qc).
 
-I don't have any experience with [BGI reads](https://www.bgi.com/global/resources/sequencing-platforms), but I'm told they are qualitatively similar to Illumina reads, so treat them as such in this guide. If you have BGI read assembly experience, please shoot me an email and share your knowledge!
-
 <br>
-
-
 
 
 ## 2: Short-read QC
@@ -43,8 +30,6 @@ It will generate three files: `short_1.fastq.gz` and `short_2.fastq.gz` will con
 <br>
 
 
-
-
 ## 3: Short-read assembly priorities
 
 Since you only have short reads, a complete genome assembly (one contig per replicon) is almost certainly not possible. Your assembly will be fragmented (a.k.a. a draft assembly) because short reads are insufficient to resolve repetitive regions of the genome :cry:
@@ -56,8 +41,6 @@ Now which of the following best applies to you?
 * None of the above. You just want a nice bacterial genome assembly for general purposes. [Go to 6.](#6-unicycler-short-read-assembly)
 
 <br>
-
-
 
 
 ## 4: SKESA assembly
@@ -74,8 +57,6 @@ One thing to keep in mind is that SKESA can leave out a bit of sequence around t
 SKESA assemblies shouldn't require any polishing, so you're now finished! __THE END__
 
 <br>
-
-
 
 
 ## 5: SPAdes assembly
@@ -414,58 +395,3 @@ Small plasmids can be a problem with long-read sequencing. Consider a genome wit
 Hybrid sequencing refers to getting both short and long reads from the sample isolate. This can give you the best of both worlds! Pretty much all downstream analyses will be available to you. Having a nice hybrid read set will also allow you to make a very high-quality assembly, perfect for creating reference genomes. It will also solve the small plasmid problem described above. Specifically, I would recommend you produce a deep (>100×) long-read set and a medium (\~50×) short-read set. This will allow you to perform a long-read-first hybrid assembly (e.g. Trycycler+Medaka+Polypolish+POLCA), which in my experience is the most accurate.
 
 I strongly encourage you to grow and extract the DNA only once for each isolate, using the same DNA for both short-read and long-read sequencing. This way you can be certain that the two read sets are in exact agreement and avoid the problems described in the [hybrid read set mismatch](#appendix-hybrid-read-set-mismatch) appendix.
-
-<br>
-
-
-
-
-
-<br>
-
-## Appendix: Oxford Nanopore basecalling
-
-One of the interesting things about Oxford Nanopore sequencing is that it is very dependent on the basecalling process: the conversion of raw signal reads to FASTQ reads. It's not a simple task, and improvements in basecalling algorithms have yielded huge improvements in recent years.
-
-You have three main options for Oxford Nanopore basecalling:
-* Let the MinKNOW sequencing software do basecalling for you. This is a great option if you're using a GPU-accelerated platform like the GridION, MinIT or MinION Mk1C. However, if you're limited to basecalling on a laptop's CPU, this could be quite slow.
-* Use the command-line tool [Guppy](https://community.nanoporetech.com/downloads) to basecall your reads. You can sequence on a laptop, move the raw reads to a big computer (ideally with a GPU) and basecall them there. Guppy also has built-in demultiplexing and barcode trimming. This is what I use and what I'd recommend to most people who aren't sequencing on a GPU-accelerated platform.
-* Use an experimental basecaller like [Bonito](https://github.com/nanoporetech/bonito). This might give you higher accuracy reads but will probably be more complicated. Only go this route if you like to experiment or stay on the bleeding edge!
-
-If you're basecalling through MinKNOW or command-line Guppy, you'll be able to choose a basecalling model, and there is a trade-off between speed and accuracy. 'Fast' basecalling models are the quickest but yield less accurate reads. 'High accuracy' or 'hac' model are in the middle. And 'Super' or 'sup' models are slowest but give the highest accuracy reads. Higher accuracy reads also result in a higher accuracy consensus sequence, so it's absolutely worth doing the best basecalling you can! Aim for a super model, if you have the computational resources to pull it off.
-
-Regardless of which option you choose, keep your software up-to-date! Basecalling continues to improve, so you'll want the latest version of your basecaller. If you're analysing older data, it might be worth re-basecalling the reads with a new basecaller version to get better accuracy, so don't delete your raw reads!
-
-<br>
-
-
-
-
-
-<br>
-
-## Appendix: hybrid read set mismatch
-
-Imagine the following scenario. You've done Illumina sequencing on a bacterial isolate, and then weeks later decide it would be nice to have long reads for that isolate as well. So you pull it out of the freezer, grow it, extract DNA and sequence using a MinION. Now you have a hybrid read set! But what if you didn't actually sequence quite the same genome? Maybe there was a plasmid in the first read set which was lost in the second read set. Or maybe a transposon moved. Or maybe your original sample was mixed and you actually sequenced two completely different genomes. Now you have two read sets for two genomes (maybe slightly different, maybe very different) and hybrid assembly methods might stumble and fall over.
-
-To avoid this problem, it's best to use a single DNA extraction for both read sets (as I recommend [above](#hybrid-sequencing)). If that's not possible, then you should at least keep this possible complication in the back of your mind.
-
-If your read sets are from different DNA extractions and your hybrid assembly isn't working, you'll need to investigate. I'd suggest doing both a short-read-only and long-read-only assembly for your isolate and comparing the results. If there are major differences between your read sets (i.e. they are of totally different genomes) then it should be obvious! More subtle differences are harder. Good luck :sweat_smile:
-
-<br>
-
-
-
-
-
-<br>
-
-## Appendix: gaps in my knowledge
-
-There are many aspects of bacterial whole-genome assembly where I have little to no experience. Here are some of my known unknowns ([as Donald Rumsfeld would say](https://en.wikipedia.org/wiki/There_are_known_knowns)):
-* [BGI sequencing platforms](https://www.bgi.com/global/resources/sequencing-platforms). Like Illumina platforms, these generate short reads.
-* Modern PacBio platforms like the [Sequel II/IIe](https://www.pacb.com/products-and-services/sequel-system). The last time I used PacBio reads for a microbial genome, they were from a PacBio RSII. I also don't have experience with PacBio [CCS/HiFi reads](https://www.pacb.com/smrt-science/smrt-sequencing/hifi-reads-for-highly-accurate-long-read-sequencing) (I've only used PacBio [CLR reads](https://www.pacb.com/wp-content/uploads/2015/09/Pacific-Biosciences-Glossary-of-Terms.pdf)) or multiplexing on a PacBio sequencer. Thankfully, [Dan Browne](https://twitter.com/DRBFX) had a chat with me to fill me in on some details, so I now have second-hand knowledge here. Thanks, Dan!
-* Synthetic long reads, such as the [Morphoseq approach](https://longastech.com/). These use a combination of lab and computational methods to produce long reads from a short-read sequencer. They can then be assembled as if they came from a long-read sequencer.
-* [Mate pair sequencing](https://sapac.illumina.com/science/technology/next-generation-sequencing/mate-pair-sequencing.html) where Illumina reads are produced from long-insert libraries, providing more information for assembly. While this seems common for big eukaryote genomes, I haven't encountered it for microbial genomes.
-
-If you've used any of these for bacterial whole-genome sequencing and assembly, I'd be very keen to hear your experiences. And if you spot any unknown unknowns, let me know about them too! I can then update this guide accordingly.
