@@ -14,6 +14,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(navigation);
   eleventyConfig.addPlugin(pluginTOC, {
 	wrapper: 'div',
+	tags: ['h2', 'h3'], //things to include in the toc on the left
 	ul: true
   });
 
