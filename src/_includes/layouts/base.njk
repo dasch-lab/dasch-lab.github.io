@@ -62,7 +62,7 @@
     </nav>
 
     {# Page content #}
-    <section id="content" class="section mt-5">
+    <section id="content">
     {% block content %}
       <div class='container'>
         {{- content | safe -}}
@@ -94,26 +94,26 @@
         {# Initialize cookies #}
         var cc = initCookieConsent();
         cc.run({
-          current_lang: 'it',
+          current_lang: 'en',
           autoclear_cookies: true,                   // default: false
           page_scripts: true,                        // default: false
-          cookie_name: 'fagoterapialab',               // default: 'cc_cookie'
+          cookie_name: 'daschlabcookie',             // default: 'cc_cookie'
           languages: {
-            'it': {
+            'en': {
               consent_modal: {
-                title: 'Utilizzo cookies',
-                description: 'Questo sito utilizza cookie essenziali per garantire il corretto funzionamento, e cookie di tracciamento per capire come interagisci con esso. Questi ultimi saranno attivati solo previo consenso. <button type="button" data-cc="c-settings" class="cc-link">Fammi scegliere</button>',
+                title: 'We use cookies!',
+                description: 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent. <button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>',
                 primary_btn: {
-                  text: 'Accetta tutto',  
+                  text: 'Accept all',  
                   role: 'accept_all'              // 'accept_selected' or 'accept_all'
                 },
                 secondary_btn: {
-                  text: 'Rifiuta tutto',
+                  text: 'Reject all',
                   role: 'accept_necessary'        // 'settings' or 'accept_necessary'
                 }
               },
               settings_modal: {
-                title: 'Preferenze cookies',
+                title: 'Cookie preferences',
                 save_settings_btn: 'Save settings',
                 accept_all_btn: 'Accept all',
                 reject_all_btn: 'Reject all',
@@ -124,54 +124,56 @@
                   {col3: 'Expiration'},
                   {col4: 'Description'}
                 ],
-                  blocks: [
-                    {
-                      title: 'Utilizzo cookies 📢',
-                      description: 'Utilizziamo i cookie per garantire le funzionalità di base del sito Web e per migliorare la tua esperienza online. Puoi scegliere per ciascuna categoria di aderire/rifiutare quando vuoi. Per maggiori dettagli relativi a cookie e altri dati sensibili, si prega di leggere la <a href="{{ '/privacy/'|url }}" class="cc-link">informativa sulla privacy</a> completa.'
-                    }, {
-                      title: 'Cookie strettamente necessari',
-                      description: 'Questi cookie sono essenziali per il corretto funzionamento del sito web. Senza questi cookie, il sito web non funzionerebbe correttamente',
-                      toggle: {
-                        value: 'necessary',
-                        enabled: true,
-                        readonly: true          // cookie categories with readonly=true are all treated as "necessary cookies"
+                blocks: [
+                  {
+                    title: 'Cookie usage 📢',
+                    description: 'I use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want. For more details relative to cookies and other sensitive data, please read the full <a href="{{ '/en/privacy/'|url }}" class="cc-link">privacy policy</a>.'
+                  }, 
+                  {
+                    title: 'Strictly necessary cookies',
+                    description: 'These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly',
+                    toggle: {
+                      value: 'necessary',
+                      enabled: true,
+                      readonly: true          // cookie categories with readonly=true are all treated as "necessary cookies"
+                    }
+                  }, 
+                  {
+                    title: 'Performance and Analytics cookies',
+                    description: 'These cookies allow the website to remember the choices you have made in the past',
+                    toggle: {
+                      value: 'analytics',     // your cookie category
+                      enabled: false,
+                      readonly: false
+                    },
+                    cookie_table: [             // list of all expected cookies
+                      {
+                        col1: '^_ga',       // match all cookies starting with "_ga"
+                        col2: 'google.com',
+                        col3: '2 years',
+                        col4: 'description ...',
+                        is_regex: true
+                      },
+                      {
+                        col1: '_gid',
+                        col2: 'google.com',
+                        col3: '1 day',
+                        col4: 'description ...',
                       }
+                    ]
                     }, {
-                      title: 'Cookie di performance e analytics',
-                      description: 'Questi cookie consentono al sito web di ricordare le scelte che hai fatto in passato',
+                      title: 'Advertisement and Targeting cookies',
+                      description: 'These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you',
                       toggle: {
-                        value: 'analytics',     // your cookie category
+                        value: 'targeting',
                         enabled: false,
                         readonly: false
-                      },
-                      cookie_table: [             // list of all expected cookies
-                        {
-                          col1: '^_ga',       // match all cookies starting with "_ga"
-                          col2: 'google.com',
-                          col3: '2 years',
-                          col4: 'description ...',
-                          is_regex: true
-                        },
-                        {
-                          col1: '_gid',
-                          col2: 'google.com',
-                          col3: '1 day',
-                          col4: 'description ...',
-                        }
-                      ]
-                      }, {
-                        title: 'Cookie pubblicitari e di targeting',
-                        description: 'Questi cookie raccolgono informazioni su come utilizzi il sito web, quali pagine hai visitato e quali link hai cliccato. Tutti i dati sono resi anonimi e non possono essere utilizzati per identificarti',
-                        toggle: {
-                          value: 'targeting',
-                          enabled: false,
-                          readonly: false
-                        }
-                      }, {
-                        title: 'Maggiori informazioni',
-                        description: 'Per qualsiasi domanda in relazione alla nostra politica sui cookie e alle tue scelte, <a class="cc-link" href="{{ '/contatti/'|url }}">contattaci</a>.',
                       }
-                  ]
+                    }, {
+                      title: 'More information',
+                      description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="{{ '/contacts/'|url }}">contact us</a>.',
+                    }
+                ]
               }
             }
           }

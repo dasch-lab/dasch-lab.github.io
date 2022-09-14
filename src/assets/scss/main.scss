@@ -24,7 +24,8 @@
   @import "general/variables";
   // @import "general/navigation";
   @import "general/cookiebar";
-  @import "general/sidebar";
+  // @import "general/sidebar";
+  @import "general/docs";
   
   body {
     font-family: 'Nunito Sans', sans-serif;
@@ -93,4 +94,8 @@
     background-color: var(--primary-color);
     color: #fff;
   }
+}
+
+header.navbar{
+  z-index: 10000;
 }

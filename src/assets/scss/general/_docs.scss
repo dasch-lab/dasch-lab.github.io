@@ -1,0 +1,98 @@
+$docs-padding: 5px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$grid-gutter-width:  1.5rem !default;
+
+.docs-toggle{
+    border-top: 2px solid #f5f5f5;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+
+    @media (min-width: $breakpoint-lg) {
+        display: none;
+    }
+}
+
+.docs-wrapper{
+    @media (min-width: $breakpoint-lg) {
+        display: grid;
+        grid-template-areas: "sidebar main toc";
+        grid-template-columns: 1fr 5fr 1fr;
+        gap: $grid-gutter-width;
+        --docs-outer: 3rem;
+        --docs-inner: 3rem;
+
+      }
+
+      --docs-outer: 1.5rem;
+      --docs-inner: 1.5rem;
+      --docs-side-padding: 1rem;
+      position: relative;
+}
+.docs-side{
+    grid-area: sidebar;
+    width: 12rem;
+    z-index: 40;
+    background-color: whitesmoke;
+    > .docs-content{
+        max-height: 100vh;
+        overflow-y: auto;
+        padding: $docs-padding;
+        position: sticky;
+        top: 0;
+    }
+
+    @media (max-width: $breakpoint-lg) {
+        display: block;
+        position: fixed;
+        min-height: 100vh;
+        visibility: hidden;
+    }
+
+    &.is-active{
+        visibility: visible;
+    }
+}
+
+.docs-main{
+    grid-area: main;
+    padding-bottom: var(--docs-outer);
+    padding-left: var(--docs-outer);
+    padding-right: var(--docs-outer);
+
+    @media (min-width: $breakpoint-md) {
+        overflow: hidden;
+    }
+}
+
+.docs-toc{
+    grid-area: toc;
+    background-color: whitesmoke;
+    width: 12rem;
+    z-index: 40;
+    
+
+    > .docs-content{
+        max-height: 100vh;
+        overflow-y: auto;
+        padding: $docs-padding;
+        position: sticky;
+        top: 0;
+        font-size: 1rem;
+    }
+
+    @media (max-width: $breakpoint-lg) {
+        display: block;
+        right: 0;
+        position: fixed;
+        min-height: 100vh;
+        visibility: hidden;
+    }
+
+    &.is-active{
+        visibility: visible;
+    }
+}

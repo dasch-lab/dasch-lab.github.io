@@ -1,31 +1,7 @@
-{# <div class="elv-toc">
-<details-force-state>
-	<details open>
-		<summary class="btn-primary benchnine rainbow-active rainbow-active-noanim">Menu</summary>
-		{%- if eleventyNavigation -%}
-			{%- set navKey = eleventyNavigation.key -%}
-		{%- endif -%}
-		{{ collections.sidebarNav | eleventyNavigation | eleventyNavigationToHtml({ activeKey: navKey, listClass: 'elv-toc-list', activeListItemClass: 'elv-toc-active' }) | safe }}
-
-
-	</details>
-</details-force-state>
-</div> #}
-
-
-
 {% set navPages = collections.sidebarNav | eleventyNavigation %}
 
 {# The rendering macro #}
 {% macro renderNavListItem(entry) -%}
-{# <li{% if entry.url == page.url %} class="is-active"{% endif %}>
-  <a href="{{ entry.url }}">{{ entry.title }}</a>
-{%- if entry.children.length -%}
-  <ul class='menu-list'>
-    {%- for child in entry.children %}{{ renderNavListItem(child) }}{% endfor -%}
-  </ul>
-{%- endif -%}
-</li> #}
 {% for item in entry %}
  {% if item.children.length %}
 	<p class="menu-label">
@@ -45,7 +21,5 @@
 
 {%- endmacro %}
 
-{# <ul class='menu-list'>
-{%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
-</ul> #}
+{# Render navigation #}
 {{ renderNavListItem(navPages) }}

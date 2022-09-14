@@ -3,56 +3,41 @@ layout: layouts/base.njk
 title: DaScH Lab Documentation
 isDocs: true
 ---
+{% set pageToc = content|toc %}
 
-  <div class='off-container'>
-    <aside class="off-sidebar">
-      <div class="menu" id="offside-menu">
+<header id="docsToggles" class='docs-toggle'>
+      <button class="button is-primary is-light bd-fat-button is-small side-button" data-target="offside-menu">Show menu</button>
+      {% if pageToc %}
+      <button class="button is-primary is-light bd-fat-button is-small side-button" data-target="offside-toc">Show sidebar</button>
+      {% endif %}
+    </header>
+  <div class='docs-wrapper'>
+    <aside class="docs-side" id="offside-menu">
+      <div class="menu docs-content" >
         {% include "components/docs-toc.njk" %}
-        {# <p class="menu-label">
-          General
-        </p>
-        <ul class="menu-list">
-          <li><a>Dashboard</a></li>
-          <li><a>Customers</a></li>
-        </ul>
-        <p class="menu-label">
-          Administration
-        </p>
-        <ul class="menu-list">
-          <li><a>Team Settings</a></li>
-          <li>
-            <a class="is-active">Manage Your Team</a>
-            <ul>
-              <li><a>Members</a></li>
-              <li><a>Plugins</a></li>
-              <li><a>Add a member</a></li>
-            </ul>
-          </li>
-          <li><a>Invitations</a></li>
-          <li><a>Cloud Storage Environment Settings</a></li>
-          <li><a>Authentication</a></li>
-        </ul>
-        <p class="menu-label">
-          Transactions
-        </p>
-        <ul class="menu-list">
-          <li><a>Payments</a></li>
-          <li><a>Transfers</a></li>
-          <li><a>Balance</a></li>
-        </ul> #}
       </div>
     </aside>
 
-    <main class='off-content'>
+    {% if pageToc %}
+      <div class='docs-toc' id="offside-toc">
+        <div class="docs-content">
+          <strong class='mt-2'>On this page</strong>
+          <hr>
+          {{ pageToc | safe }}
+        </div>
+      </div>
+      {% endif %}
+
+    <main class='docs-main'>
 
       <div class="bd-intro">
 
         <nav class="navbar" role="navigation" aria-label="page navigation">
-          <div class="navbar-burger" data-target="offside-menu">
+          {# <div class="navbar-burger" data-target="offside-menu">
               <span></span>
               <span></span>
               <span></span>
-          </div>
+          </div> #}
 
           <div class="navbar-end">
             <div class="navbar-item">
@@ -68,14 +53,32 @@ isDocs: true
         <h1 class="bd-title mb-0" id="content">{% if pageTitle %}{{ pageTitle | safe }}{% endif %}</h1>
       </div>
 
-      <div class='bd-toc'>
-        <strong class='mt-2'>On this page</strong>
-        <hr>
-        {{ content | toc | safe }}
+      <div class="container">
+      {{ content | safe }}
       </div>
+      
 
-      <div class='bd-content'>
-        {{ content | safe }}
-      </div>
+      
     </main>
+
+      
   </div>
+
+<script type="text/javascript">
+
+  {# https://tympanus.net/Freebies/scribbler/doc.html #}
+  window.addEventListener("load", function(){
+
+    {#- Toggle navigation -#}
+    $(".side-button").click(function() {
+
+        // get this data-target
+        var target = $(this).data("target");
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        $(this).toggleClass("is-active");
+        $('#' + target).toggleClass("is-active");
+
+    });
+  });
+</script>
