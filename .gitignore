@@ -10,7 +10,7 @@ node_modules
 *.log
 
 #ignore generated files
-#build
+build
 src/_data/manifest.json
 
 # Ignore env variables and secret keys
