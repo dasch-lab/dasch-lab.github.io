@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="it" xmlns="http://www.w3.org/1999/xhtml" class="scrolled-to-top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="" />
+
+    <title>DaScH-Lab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet" />
+
+    
+
+    
+    <link href="/assets/css/main-96a0ba74b2.css" rel="stylesheet" />
+    <link href="/assets/css/cookieconsent-571e6aa711.css" rel="stylesheet" />
+
+  </head>
+
+  <body class="has-navbar-fixed-top"><header class="navbar is-fixed-top">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          DaScH-Lab
+          
+        </a>
+        <div class="navbar-burger" data-target="main-navbar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div id="main-navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">Home</a>
+          <a class="navbar-item" href="/docs/">Docs</a>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <img src="/assets/images/logotls.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <section id="content">
+    
+      <div class='container'>
+
+<header id="docsToggles" class='docs-toggle'>
+      <button class="button is-primary is-light bd-fat-button is-small side-button" data-target="offside-menu">Show menu</button>
+      
+      <button class="button is-primary is-light bd-fat-button is-small side-button" data-target="offside-toc">Show sidebar</button>
+      
+    </header>
+  <div class='docs-wrapper'>
+    <aside class="docs-side" id="offside-menu">
+      <div class="menu docs-content" >
+        
+
+
+
+
+
+
+
+ 
+	<p class="menu-label">
+		<a href="/docs/">Overview</a>
+	</p>
+<ul class='menu-list'>
+    
+
+ 
+	<li>
+		<a href="/docs/conda/">Conda</a>
+	</li>
+
+  </ul>
+
+ 
+	<p class="menu-label">
+		<a href="/docs/bioinformatics/">Bioinformatics</a>
+	</p>
+
+      </div>
+    </aside>
+
+    
+      <div class='docs-toc' id="offside-toc">
+        <div class="docs-content">
+          <strong class='mt-2'>On this page</strong>
+          <hr>
+          <div class="toc" >
+        <ul><li><a href="#example-of-git-workflow">Example of Git workflow</a></li><li><a href="#branching-to-create-a-new-feature">Branching to create a new feature</a></li><li><a href="#extra">Extra</a></li></ul>
+      </div>
+        </div>
+      </div>
+      
+
+    <main class='docs-main'>
+
+      <div class="bd-intro">
+
+        <nav class="navbar" role="navigation" aria-label="page navigation">
+          
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button" href="https://github.com/dasch-lab/dashlab.github.io/tree/master/./src/docs/git101.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <h1 class="bd-title mb-0" id="content"></h1>
+      </div>
+
+      <div class="container">
+      <h2 id="example-of-git-workflow" tabindex="-1">Example of Git workflow</h2>
+<ol>
+<li>
+<h4 id="clone-an-existing-repository" tabindex="-1">Clone an existing repository</h4>
+</li>
+</ol>
+<pre><code class="language-bash">$ git clone username@host:/path/of/the/repository/to/clone
+</code></pre>
+<ol start="2">
+<li>
+<h4 id="move-the-new-files-from-the-working-directory-to-the-staging-area" tabindex="-1">Move the new files from the working directory to the staging area</h4>
+</li>
+</ol>
+<pre><code class="language-bash">$ git add .
+</code></pre>
+<ol start="3">
+<li>
+<h4 id="new-commit-(with-head-as-parent)-from-staging-area" tabindex="-1">New commit (with HEAD as parent) from staging area</h4>
+</li>
+</ol>
+<pre><code class="language-bash">$ git commit -m &quot;&lt;message-as-present-statement&gt;&quot;
+</code></pre>
+<ol start="4">
+<li>
+<h4 id="syncronize-your-local-repository-with-the-hosted-repository" tabindex="-1">Syncronize your local repository with the hosted repository</h4>
+</li>
+</ol>
+<pre><code class="language-bash">$ git push origin
+</code></pre>
+<hr>
+<h2 id="branching-to-create-a-new-feature" tabindex="-1">Branching to create a new feature</h2>
+<ol>
+<li>
+<h4 id="create-the-local-branch-to-work-on-the-new-feature-development" tabindex="-1">Create the <strong>local branch</strong> to work on the new feature development:</h4>
+</li>
+</ol>
+<pre><code class="language-bash">$ git branch &lt;new-feature-branch&gt;
+</code></pre>
+<ol start="2">
+<li>
+<h4 id="select-the-&quot;new-feature-branch&quot;-as-active-working-branch" tabindex="-1">Select the &quot;<em>new-feature-branch</em>&quot; as active working branch:</h4>
+</li>
+</ol>
+<pre><code class="language-bash">$ git checkout &lt;new-feature-branch&gt;
+</code></pre>
+<ul>
+<li>
+<h4 id="working-on-feature-development" tabindex="-1">Working on feature development:</h4>
+</li>
+</ul>
+<pre><code class="language-bash">&lt;code the new feature&gt;
+
+$ git add .
+$ git commit -m &quot;Add &lt;new-feature&gt;&quot;
+</code></pre>
+<ol start="3">
+<li>
+<h4 id="create-the-new-remote-branch-to-be-reviewed" tabindex="-1">Create the new <strong>remote branch</strong> to be reviewed:</h4>
+</li>
+</ol>
+<pre><code class="language-bash">$ git push origin &lt;new-feature-branch&gt;
+</code></pre>
+<ol start="4">
+<li>
+<h4 id="review-and-merge-the-local-branch-with-the-local-master-and-push-the-updates-to-remote-master" tabindex="-1">Review and merge the local branch with the local master and push the updates to remote master:</h4>
+</li>
+</ol>
+<pre><code class="language-bash">$ git checkout master
+$ git merge &lt;new-feature-branch&gt;
+
+$ git push origin master
+
+</code></pre>
+<ol start="4">
+<li>
+<h4 id="delete-both-local-and-remote-&quot;new-feature-branch&quot;-branches" tabindex="-1">Delete both local and remote &quot;<em>new-feature-branch</em>&quot; branches:</h4>
+</li>
+</ol>
+<pre><code class="language-bash">$ git branch -d &lt;new-feature-branch&gt;
+$ git push origin --delete &lt;new-feature-branch&gt;
+</code></pre>
+<hr>
+<h2 id="extra" tabindex="-1">Extra</h2>
+<ul>
+<li>
+<h4 id="inspect-the-content-of-the-remote-repository" tabindex="-1">Inspect the content of the remote repository:</h4>
+</li>
+</ul>
+<pre><code>$ git remote show origin
+</code></pre>
+<ul>
+<li>
+<h4 id="pull-any-changes-that-was-pushed-to-the-hosted-repository" tabindex="-1">Pull any changes that was pushed to the hosted repository:</h4>
+</li>
+</ul>
+<pre><code>$ git pull
+</code></pre>
+<ul>
+<li>
+<h4 id="take-a-file-from-the-staging-area-and-take-it-in-the-working-directory-(keep-modifying)" tabindex="-1">Take a file from the staging-area and take it in the working directory (keep modifying):</h4>
+</li>
+</ul>
+<pre><code class="language-bash">$ git restore --staged &lt;file-name&gt;
+</code></pre>
+<ul>
+<li>
+<h4 id="list-the-local-and-remote-branches" tabindex="-1">List the <em>local</em> and <em>remote</em> branches:</h4>
+</li>
+</ul>
+<pre><code class="language-bash">$ git branch -v
+$ git branch -vr
+</code></pre>
+
+      </div>
+      
+
+      
+    </main>
+
+      
+  </div>
+
+<script type="text/javascript">
+
+  
+  window.addEventListener("load", function(){$(".side-button").click(function() {
+
+        // get this data-target
+        var target = $(this).data("target");
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        $(this).toggleClass("is-active");
+        $('#' + target).toggleClass("is-active");
+
+    });
+  });
+</script></div>
+    
+    </section><script defer="defer" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script defer src="/assets/js/cookieconsent-067c524395.js"></script>
+
+    <script type="text/javascript">
+
+      
+      window.addEventListener("load", function(){$(".navbar-burger").click(function() {
+
+            // get this data-target
+            var target = $(this).data("target");
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(this).toggleClass("is-active");
+            $('#' + target).toggleClass("is-active");
+
+        });
+
+        
+        var cc = initCookieConsent();
+        cc.run({
+          current_lang: 'en',
+          autoclear_cookies: true,                   // default: false
+          page_scripts: true,                        // default: false
+          cookie_name: 'daschlabcookie',             // default: 'cc_cookie'
+          languages: {
+            'en': {
+              consent_modal: {
+                title: 'We use cookies!',
+                description: 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent. <button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>',
+                primary_btn: {
+                  text: 'Accept all',  
+                  role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                },
+                secondary_btn: {
+                  text: 'Reject all',
+                  role: 'accept_necessary'        // 'settings' or 'accept_necessary'
+                }
+              },
+              settings_modal: {
+                title: 'Cookie preferences',
+                save_settings_btn: 'Save settings',
+                accept_all_btn: 'Accept all',
+                reject_all_btn: 'Reject all',
+                close_btn_label: 'Close',
+                cookie_table_headers: [
+                  {col1: 'Name'},
+                  {col2: 'Domain'},
+                  {col3: 'Expiration'},
+                  {col4: 'Description'}
+                ],
+                blocks: [
+                  {
+                    title: 'Cookie usage 📢',
+                    description: 'I use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want. For more details relative to cookies and other sensitive data, please read the full <a href="/en/privacy/" class="cc-link">privacy policy</a>.'
+                  }, 
+                  {
+                    title: 'Strictly necessary cookies',
+                    description: 'These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly',
+                    toggle: {
+                      value: 'necessary',
+                      enabled: true,
+                      readonly: true          // cookie categories with readonly=true are all treated as "necessary cookies"
+                    }
+                  }, 
+                  {
+                    title: 'Performance and Analytics cookies',
+                    description: 'These cookies allow the website to remember the choices you have made in the past',
+                    toggle: {
+                      value: 'analytics',     // your cookie category
+                      enabled: false,
+                      readonly: false
+                    },
+                    cookie_table: [             // list of all expected cookies
+                      {
+                        col1: '^_ga',       // match all cookies starting with "_ga"
+                        col2: 'google.com',
+                        col3: '2 years',
+                        col4: 'description ...',
+                        is_regex: true
+                      },
+                      {
+                        col1: '_gid',
+                        col2: 'google.com',
+                        col3: '1 day',
+                        col4: 'description ...',
+                      }
+                    ]
+                    }, {
+                      title: 'Advertisement and Targeting cookies',
+                      description: 'These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you',
+                      toggle: {
+                        value: 'targeting',
+                        enabled: false,
+                        readonly: false
+                      }
+                    }, {
+                      title: 'More information',
+                      description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="/contacts/">contact us</a>.',
+                    }
+                ]
+              }
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

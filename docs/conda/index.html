@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="it" xmlns="http://www.w3.org/1999/xhtml" class="scrolled-to-top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="" />
+
+    <title>DaScH-Lab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet" />
+
+    
+
+    
+    <link href="/assets/css/main-96a0ba74b2.css" rel="stylesheet" />
+    <link href="/assets/css/cookieconsent-571e6aa711.css" rel="stylesheet" />
+
+  </head>
+
+  <body class="has-navbar-fixed-top"><header class="navbar is-fixed-top">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          DaScH-Lab
+          
+        </a>
+        <div class="navbar-burger" data-target="main-navbar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div id="main-navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">Home</a>
+          <a class="navbar-item" href="/docs/">Docs</a>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <img src="/assets/images/logotls.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <section id="content">
+    
+      <div class='container'>
+
+<header id="docsToggles" class='docs-toggle'>
+      <button class="button is-primary is-light bd-fat-button is-small side-button" data-target="offside-menu">Show menu</button>
+      
+      <button class="button is-primary is-light bd-fat-button is-small side-button" data-target="offside-toc">Show sidebar</button>
+      
+    </header>
+  <div class='docs-wrapper'>
+    <aside class="docs-side" id="offside-menu">
+      <div class="menu docs-content" >
+        
+
+
+
+
+
+
+
+ 
+	<p class="menu-label">
+		<a href="/docs/">Overview</a>
+	</p>
+<ul class='menu-list'>
+    
+
+ 
+	<li>
+		<a href="/docs/conda/">Conda</a>
+	</li>
+
+  </ul>
+
+ 
+	<p class="menu-label">
+		<a href="/docs/bioinformatics/">Bioinformatics</a>
+	</p>
+
+      </div>
+    </aside>
+
+    
+      <div class='docs-toc' id="offside-toc">
+        <div class="docs-content">
+          <strong class='mt-2'>On this page</strong>
+          <hr>
+          <div class="toc" >
+        <ul><li><a href="#installing-conda">Installing conda</a></li><li><a href="#cloning-and-activating-a-conda-environment">Cloning and activating a conda environment</a></li><li><a href="#demonstration">Demonstration</a></li><li><a href="#further-reading">Further reading</a></li></ul>
+      </div>
+        </div>
+      </div>
+      
+
+    <main class='docs-main'>
+
+      <div class="bd-intro">
+
+        <nav class="navbar" role="navigation" aria-label="page navigation">
+          
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button" href="https://github.com/dasch-lab/dashlab.github.io/tree/master/./src/docs/conda.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <h1 class="bd-title mb-0" id="content"></h1>
+      </div>
+
+      <div class="container">
+      <h1 id="conda" tabindex="-1">Conda</h1>
+<p>From the website, <code>conda</code> provides <a href="https://docs.conda.io/en/latest/">&quot;Package, dependency and environment management for any language&quot;</a>.</p>
+<p>Conda is a package manager allows specific versions of programs to be installed, alongside their dependencies.<br>
+Different sets of programs can be installed to different <a href="https://www.anaconda.com/moving-conda-environments/">virtual environments</a>.<br>
+A virtual environment is basically a set of programs.</p>
+<h2 id="installing-conda" tabindex="-1">Installing <code>conda</code></h2>
+<p>Conda is part of <a href="https://www.anaconda.com/distribution/">Anaconda</a>, which is available for free.<br>
+Conda is also available through <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>, a free minimal installer for conda.</p>
+<p>Conda can be installed on a 64-bit Linux system with the following commands...</p>
+<pre><code class="language-bash"># Downloading miniconda
+$ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+# Installing miniconda
+$ bash miniconda.sh -b -p $HOME/miniconda
+# Updating conda
+$ conda update -q conda
+</code></pre>
+<h2 id="cloning-and-activating-a-conda-environment" tabindex="-1">Cloning and activating a <code>conda</code> environment</h2>
+<p>Conda virtual environments can be shared, either as a <code>.yml</code> file or a <code>.txt</code> file.<br>
+A <code>.yml</code> copy of a conda environment can be used to recreate that environment on another machine, regardless of the operating system platform used.<br>
+A <code>.txt</code> copy of a conda environment is more explicit: it can be used to create an identical copy of a conda environment using the same operating system platform as the original machine.<br>
+A conda virtual environment is used throughout this project: a <a href="../envs/bioinfo-notebook.yml"><code>.yml</code> copy</a> and an <a href="../envs/bioinfo-notebook.txt">explicit <code>.txt</code> copy</a> of this conda environment are provided.</p>
+<p>A conda environment can be activated using <code>$ conda activate name_of_environment</code>.<br>
+Once activated, the programs installed in this environment are available.<br>
+Conda can be deactivated using <code>$ conda deactivate</code>.</p>
+<p>The <code>conda</code> environment used throughout this project can be created from <a href="../envs/bioinfo-notebook.txt">bioinfo-notebook.txt</a> and activated using the following commands...</p>
+<pre><code class="language-bash"># Creating the bioinfo-notebook environment
+/bioinfo-notebook $ conda create --name bioinfo-notebook --file envs/bioinfo-notebook.txt
+# Activating the bioinfo-notebook environment
+$ conda activate bioinfo-notebook
+# Once activated, the environment name is at the start of the bash prompt
+(bioinfo-notebook) $
+</code></pre>
+<h2 id="demonstration" tabindex="-1">Demonstration</h2>
+<p>In this video demonstration, a conda virtual environment is created using <a href="../envs/bioinfo-notebook.txt">bioinfo-notebook.txt</a>.<br>
+This virtual environment is then activated using <code>conda activate bioinfo-notebook</code>.<br>
+Note that the name of the active conda environment is displayed in brackets at the start of the bash prompt: <code>(name of active environment) ... $</code>.</p>
+<p><a href="https://asciinema.org/a/305992?autoplay=1"><img src="https://asciinema.org/a/305992.svg" alt="asciicast"></a></p>
+<h2 id="further-reading" tabindex="-1">Further reading</h2>
+<ol>
+<li>Downloading conda: <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html">https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html</a></li>
+<li>Conda packages: <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/packages.html">https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/packages.html</a></li>
+<li>Conda environments: <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html">https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html</a></li>
+</ol>
+
+      </div>
+      
+
+      
+    </main>
+
+      
+  </div>
+
+<script type="text/javascript">
+
+  
+  window.addEventListener("load", function(){$(".side-button").click(function() {
+
+        // get this data-target
+        var target = $(this).data("target");
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        $(this).toggleClass("is-active");
+        $('#' + target).toggleClass("is-active");
+
+    });
+  });
+</script></div>
+    
+    </section><script defer="defer" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script defer src="/assets/js/cookieconsent-067c524395.js"></script>
+
+    <script type="text/javascript">
+
+      
+      window.addEventListener("load", function(){$(".navbar-burger").click(function() {
+
+            // get this data-target
+            var target = $(this).data("target");
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(this).toggleClass("is-active");
+            $('#' + target).toggleClass("is-active");
+
+        });
+
+        
+        var cc = initCookieConsent();
+        cc.run({
+          current_lang: 'en',
+          autoclear_cookies: true,                   // default: false
+          page_scripts: true,                        // default: false
+          cookie_name: 'daschlabcookie',             // default: 'cc_cookie'
+          languages: {
+            'en': {
+              consent_modal: {
+                title: 'We use cookies!',
+                description: 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent. <button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>',
+                primary_btn: {
+                  text: 'Accept all',  
+                  role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                },
+                secondary_btn: {
+                  text: 'Reject all',
+                  role: 'accept_necessary'        // 'settings' or 'accept_necessary'
+                }
+              },
+              settings_modal: {
+                title: 'Cookie preferences',
+                save_settings_btn: 'Save settings',
+                accept_all_btn: 'Accept all',
+                reject_all_btn: 'Reject all',
+                close_btn_label: 'Close',
+                cookie_table_headers: [
+                  {col1: 'Name'},
+                  {col2: 'Domain'},
+                  {col3: 'Expiration'},
+                  {col4: 'Description'}
+                ],
+                blocks: [
+                  {
+                    title: 'Cookie usage 📢',
+                    description: 'I use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want. For more details relative to cookies and other sensitive data, please read the full <a href="/en/privacy/" class="cc-link">privacy policy</a>.'
+                  }, 
+                  {
+                    title: 'Strictly necessary cookies',
+                    description: 'These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly',
+                    toggle: {
+                      value: 'necessary',
+                      enabled: true,
+                      readonly: true          // cookie categories with readonly=true are all treated as "necessary cookies"
+                    }
+                  }, 
+                  {
+                    title: 'Performance and Analytics cookies',
+                    description: 'These cookies allow the website to remember the choices you have made in the past',
+                    toggle: {
+                      value: 'analytics',     // your cookie category
+                      enabled: false,
+                      readonly: false
+                    },
+                    cookie_table: [             // list of all expected cookies
+                      {
+                        col1: '^_ga',       // match all cookies starting with "_ga"
+                        col2: 'google.com',
+                        col3: '2 years',
+                        col4: 'description ...',
+                        is_regex: true
+                      },
+                      {
+                        col1: '_gid',
+                        col2: 'google.com',
+                        col3: '1 day',
+                        col4: 'description ...',
+                      }
+                    ]
+                    }, {
+                      title: 'Advertisement and Targeting cookies',
+                      description: 'These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you',
+                      toggle: {
+                        value: 'targeting',
+                        enabled: false,
+                        readonly: false
+                      }
+                    }, {
+                      title: 'More information',
+                      description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="/contacts/">contact us</a>.',
+                    }
+                ]
+              }
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
