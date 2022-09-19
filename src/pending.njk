@@ -1,0 +1,45 @@
+---
+layout: layouts/base.njk
+excludeFromSearch: true
+permalink: /_pending/
+pagination:
+  data: collections.docsFeed
+  size: 10
+  alias: docs
+eleventyComputed:
+  social:
+    description: "DaSch Lab"
+---
+
+<section class='section'>
+<h1>Pending documents</h1>
+<div class="table-container">
+    <table class="table is-fullwidth is-hoverable is-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Path</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in docs %}
+            {% if not item.data.public %}
+            <tr>
+                <td><a href="{{ item.data.permalink }}">{{ item.fileSlug }}</a></td>
+                <td>{{ item.date |date('d MMMM yyyy') }}</td>
+                <td>{{ item.data.permalink }}</td>
+                <td>
+                    <span class="buttons">
+                        <a class="button" href="{{ item.data.permalink }}">View</a>
+                        <a class="button" href="https://github.com/dasch-lab/dashlab.github.io/tree/master/{{ item.inputPath }}">Edit</a>
+                    </span>
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</section>

@@ -1,4 +1,5 @@
 ---
+public: true
 eleventyNavigation:
   key: 'Overview'
   order: 1

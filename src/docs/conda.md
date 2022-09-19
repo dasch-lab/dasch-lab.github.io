@@ -1,4 +1,5 @@
 ---
+public: true
 eleventyNavigation:
   parent: 'Overview'
   key: 'Conda'

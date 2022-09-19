@@ -1,4 +1,5 @@
 ---
+public: true
 eleventyNavigation:
   key: 'Bioinformatics'
   order: 2

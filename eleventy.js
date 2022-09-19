@@ -1,5 +1,6 @@
 require('dotenv-flow').config();
 
+const date = require('./eleventy/date');
 const navigation = require("@11ty/eleventy-navigation");
 const pluginTOC = require('eleventy-plugin-toc');
 const markdownIt = require("markdown-it");
@@ -10,6 +11,9 @@ const slugify = require("slugify");
 
 module.exports = function (eleventyConfig) {
 
+  // Eleventy filters
+  eleventyConfig.addFilter('date', date.date);
+  
   // Eleventy plugins
   eleventyConfig.addPlugin(navigation);
   eleventyConfig.addPlugin(pluginTOC, {
@@ -76,12 +80,21 @@ module.exports = function (eleventyConfig) {
 		return collection.getFilteredByGlob("src/docs/**/*.md").sort((a, b) => {
 			return b.date - a.date; // sort by date - descending
 		});
+		// .map(item => {
+		// 	// Check if the document is public. Fallback to false
+		// 	let isPublished = item.data.public || false;
+		// 	if(!isPublished){
+
+		// 	}
+		// 	console.log(isPublished);
+		// });
 	});
 
   eleventyConfig.addCollection("sidebarNav", function(collection) {
 		// filter out excludeFromSidebar options
 		return collection.getAll()
-			.filter(item => (item.data || {}).excludeFromSidebar !== true);
+			.filter(item => (item.data || {}).excludeFromSidebar !== true)
+			.filter(item => (item.data || {}).public !== false);
 	});
 
   return {

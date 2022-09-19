@@ -22,9 +22,7 @@
   
   @import "general/typography";
   @import "general/variables";
-  // @import "general/navigation";
   @import "general/cookiebar";
-  // @import "general/sidebar";
   @import "general/docs";
   
   body {
@@ -97,5 +95,10 @@
 }
 
 header.navbar{
-  z-index: 10000;
+  z-index: 10000 !important;
+}
+
+/* Navigation */
+a.navbar-item{
+  font-weight: normal;
 }

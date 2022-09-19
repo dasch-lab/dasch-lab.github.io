@@ -1,9 +1,11 @@
 {% set navPages = collections.sidebarNav | eleventyNavigation %}
 
 {# The rendering macro #}
-{% macro renderNavListItem(entry) -%}
+{% macro renderNavListItem(entry, level) -%}
+
 {% for item in entry %}
- {% if item.children.length %}
+{# <h1>{{ level }}|{{ item.title }}</h1> #}
+ {% if level == 0 %}
 	<p class="menu-label">
 		<a href="{{ item.url }}">{{ item.title }}</a>
 	</p>
@@ -14,7 +16,7 @@
 {% endif %}
 {%- if item.children.length -%}
   <ul class='menu-list'>
-    {{ renderNavListItem(item.children) }}
+    {{ renderNavListItem(item.children, level+1) }}
   </ul>
 {%- endif -%}
 {% endfor %}
@@ -22,4 +24,4 @@
 {%- endmacro %}
 
 {# Render navigation #}
-{{ renderNavListItem(navPages) }}
+{{ renderNavListItem(navPages, 0) }}
