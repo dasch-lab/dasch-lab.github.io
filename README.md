@@ -43,6 +43,8 @@ To build the pages for production, or for development, please type from the proj
 - **watch**: Generate front-end files and run a local web server that listen at `localhost:8080` and watch for changes, rebuilding the files when changes are detected. 
 - **build**: Generate the front-end files in the `build` directory, ready to be deployed. 
 
+> NOTE: please run `npm install` after every git pull to make sure dependencies are updated.
+
 ## Documentation
 
 Any additional [project documentation][docs] file is in the `docs` directory.
