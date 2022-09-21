@@ -20,9 +20,42 @@
     <link href="{{ manifest.css.main|url }}" rel="stylesheet" />
     <link href="{{ manifest.css.cookieconsent|url }}" rel="stylesheet" />
 
+    <script>
+      {# const wrapper = document.querySelector(":root");
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      wrapper.setAttribute("data-theme", "dark"); #}
+      {# document.body.className = currentTheme; #}
+
+      const setDarkMode = (active = false) => {
+          const wrapper = document.querySelector(":root");
+          if (active) {
+            wrapper.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+          } else {
+            wrapper.setAttribute("data-theme", "light");
+            localStorage.setItem("theme", "light");
+          }
+        };
+
+      var queryScheme = window.matchMedia("(prefers-color-scheme: dark)");
+      const themePreference = localStorage.getItem("theme");
+      var activeTheme = queryScheme.matches;
+      if (themePreference === "dark") {
+        activeTheme = true;
+      }
+      if (themePreference === "light") {
+        activeTheme = false;
+      }
+
+      setDarkMode(activeTheme);
+
+
+    </script>
+
   </head>
 
   <body class="has-navbar-fixed-top">
+    
 
     {#- Navigation menu -#}
     <header class="navbar is-fixed-top">
@@ -46,6 +79,14 @@
 
         <div class="navbar-end">
           <div class="navbar-item">
+
+            <button class="js__dark-mode-toggle dark-mode-toggle" type="button">
+              <span class="dark-mode-toggle__icon"></span>
+              <span class="dark-mode-toggle__text hidden--visually">dark mode</span>
+            </button>
+
+          </div>
+          <div class="navbar-item">
             <a href="https://www.toscanalifesciences.org/" target="_blank">
               <img src="{{ '/assets/images/logotls.png'|url }}" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
             </a>
@@ -62,6 +103,15 @@
       </div>
     {% endblock %}
     </section>
+
+    {#- Footer -#}
+    <footer class="footer">
+      <div class="content has-text-centered">
+        {# <p>
+          <strong>DaScH-Lab</strong>
+        </p> #}
+      </div>
+    </footer>
 
     {#- Include aggregated scripts -#}
     <script defer="defer" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -83,6 +133,49 @@
             $('#' + target).toggleClass("is-active");
 
         });
+
+        {#- theme switcher -#}
+        
+
+        {# const setDarkMode = (active = false) => {
+          const wrapper = document.querySelector(":root");
+          if (active) {
+            wrapper.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+          } else {
+            wrapper.setAttribute("data-theme", "light");
+            localStorage.setItem("theme", "light");
+          }
+        }; #}
+
+        const toggleDarkMode = () => {
+          const theme = document.querySelector(":root").getAttribute("data-theme");
+          // If the current theme is "light", we want to activate dark
+          setDarkMode(theme === "light");
+        };
+
+        const initDarkMode = (active = false) => {
+          const query = window.matchMedia("(prefers-color-scheme: dark)");
+          {#const themePreference = localStorage.getItem("theme");
+
+          let active = query.matches;
+          if (themePreference === "dark") {
+            active = true;
+          }
+          if (themePreference === "light") {
+            active = false;
+          } #}
+
+          setDarkMode(active);
+
+          query.addListener(e => setDarkMode(e.matches));
+
+          const toggleButton = document.querySelector(".js__dark-mode-toggle");
+          toggleButton.addEventListener("click", toggleDarkMode);
+        };
+
+        {#- Initialize darkmode -#}
+        initDarkMode(activeTheme);
 
         {# Initialize cookies #}
         var cc = initCookieConsent();

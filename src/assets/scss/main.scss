@@ -3,19 +3,41 @@
 :root {
     --primary-color: #da1039;
     --primary-color-light: #8E7474;
-    --accent-color: #FE6A6B;
-    --accent-color-light: #FFE4E4;
-    --accent-color-dark: #B94B4C;
-    --white-color: #FAFBFC;
+    --secondary-color: #f5f5f5;
+    // --accent-color: #FE6A6B;
+    // --accent-color-light: #FFE4E4;
+    // --accent-color-dark: #B94B4C;
+    // --white-color: #FAFBFC;
     --light-gray-color: #EDEDED;
     --medium-gray-color: #959DA5;
     --dark-gray-color: #444D56; 
     --bg-color: #F8F8FA;
-    --code-bg-color: #F0E8E8;
+    --code-bg-color: #f5f5f5;
     --fg-color: #626262;
   }
 
-  $body-overflow-y: auto;
+:root[data-theme="dark"] {
+  --primary-color: #da1039;
+  --primary-color-light: #8E7474;
+  --secondary-color: #161b22;
+  // --accent-color: #FE6A6B;
+  // --accent-color-light: #FFE4E4;
+  // --accent-color-dark: #B94B4C;
+  // --white-color: #FAFBFC;
+  --light-gray-color: #EDEDED;
+  --medium-gray-color: #959DA5;
+  --dark-gray-color: #444D56; 
+  --bg-color: #121212;
+  --code-bg-color: #161b22;
+  --fg-color: #cccccc;
+}
+
+// Bulma variables
+$body-overflow-y: auto; // Remove fixed y scroll
+$scheme-main: var(--bg-color);
+$text: var(--fg-color);
+$footer-background-color: var(--secondary-color);
+$footer-color: var(--fg-color);
   
   // @import "bulma";
   @import "bulma";
@@ -24,12 +46,16 @@
   @import "general/variables";
   @import "general/cookiebar";
   @import "general/docs";
+  @import "general/slider";
   
   body {
     font-family: 'Nunito Sans', sans-serif;
     
     font-size: 19px;
     color: var(--fg-color);
+    background: var(--bg-color);
+
+
     overflow-x: hidden;
   }
   
@@ -60,7 +86,7 @@
   
   p {
     font-weight: 300;
-    color: #4A4A4A;
+    color: var(--fg-color);
   
     &.lead {
       font-size: 1.5rem;
@@ -86,11 +112,21 @@
     }
   }
 
+pre{
+  background-color: var(--code-bg-color);
+  color: var(--fg-color);
+}
+
+code{
+  background-color: var(--code-bg-color);
+  color: var(--primary-color);
+}
+
 /* Hero */
 .hero{
   &.is-primary {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--fg-color);
   }
 }
 

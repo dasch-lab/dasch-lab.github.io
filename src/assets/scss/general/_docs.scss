@@ -6,7 +6,7 @@ $breakpoint-xl: 1200px;
 $grid-gutter-width:  1.5rem !default;
 
 .docs-toggle{
-    border-top: 2px solid #f5f5f5;
+    border-top: 2px solid var(--secondary-color);
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0.75rem;
@@ -36,7 +36,7 @@ $grid-gutter-width:  1.5rem !default;
     grid-area: sidebar;
     width: 12rem;
     z-index: 40;
-    background-color: whitesmoke;
+    background-color: var(--secondary-color);
     > .docs-content{
         max-height: 100vh;
         overflow-y: auto;
@@ -70,7 +70,7 @@ $grid-gutter-width:  1.5rem !default;
 
 .docs-toc{
     grid-area: toc;
-    background-color: whitesmoke;
+    background-color: var(--secondary-color);
     width: 12rem;
     z-index: 40;
     

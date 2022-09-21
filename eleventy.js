@@ -7,7 +7,8 @@ const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItToc = require("markdown-it-table-of-contents");
 const slugify = require("slugify");
-// const config = require('./config.js');
+const htmlmin = require('html-minifier');
+const config = require('./config.js');
 
 module.exports = function (eleventyConfig) {
 
@@ -30,6 +31,22 @@ module.exports = function (eleventyConfig) {
 		newStr = newStr.replace(/<[^>]*>/g, "");
 		return newStr;
 	}
+
+  // Html minimiser
+  eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+
+    if(!outputPath.endsWith(".html") || !config.isProd)
+      return content;
+
+    return htmlmin.minify(content, {
+      useShortDoctype: true,
+      removeComments: true,
+      minifyJS: true,
+      minifyCSS: true,
+      processScripts: false,
+      collapseWhitespace: true
+    });
+  });
 
   // Markdown support
   function markdownItSlugify(s) {
