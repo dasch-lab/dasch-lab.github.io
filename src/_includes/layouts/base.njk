@@ -54,62 +54,65 @@
 
   </head>
 
-  <body class="has-navbar-fixed-top">
-    
+  <body class="has-navbar-fixed-top default">
+    <div id="wrapper">
 
-    {#- Navigation menu -#}
-    <header class="navbar is-fixed-top">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="{{ '/'|url }}">
-          DaScH-Lab
-          
-        </a>
-        <div class="navbar-burger" data-target="main-navbar">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-
-      <div id="main-navbar" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="{{ '/'|url }}">Home</a>
-          <a class="navbar-item" href="{{ '/docs/'|url }}">Docs</a>
-        </div>
-
-        <div class="navbar-end">
-          <div class="navbar-item">
-
-            <button class="js__dark-mode-toggle dark-mode-toggle" type="button">
-              <span class="dark-mode-toggle__icon"></span>
-              <span class="dark-mode-toggle__text hidden--visually">dark mode</span>
-            </button>
-
-          </div>
-          <div class="navbar-item">
-            <a href="https://www.toscanalifesciences.org/" target="_blank">
-              <img src="{{ '/assets/images/logotls.png'|url }}" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-            </a>
+      {#- Navigation menu -#}
+      <header class="navbar is-fixed-top">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="{{ '/'|url }}">
+            DaScH-Lab
+            
+          </a>
+          <div class="navbar-burger" data-target="main-navbar">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
-      </div>
-    </header>
+
+        <div id="main-navbar" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="{{ '/'|url }}">Home</a>
+            <a class="navbar-item" href="{{ '/docs/'|url }}">Docs</a>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+
+              <button class="js__dark-mode-toggle dark-mode-toggle" type="button">
+                <span class="dark-mode-toggle__icon"></span>
+                <span class="dark-mode-toggle__text hidden--visually">dark mode</span>
+              </button>
+
+            </div>
+            <div class="navbar-item">
+              <a href="https://www.toscanalifesciences.org/" target="_blank">
+                <img src="{{ '/assets/images/logotls.png'|url }}" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
 
     {# Page content #}
-    <section id="content">
-    {% block content %}
-      <div class='container'>
-        {{- content | safe -}}
-      </div>
-    {% endblock %}
-    </section>
+    {# <div class='is-flex-direction-column is-fullheight-100vh'> #}
+      <section id="content">
+      {% block content %}
+        <div class='container'>
+          {{- content | safe -}}
+        </div>
+      {% endblock %}
+      </section>
+
+    </div>
 
     {#- Footer -#}
     <footer class="footer">
       <div class="content has-text-centered">
-        {# <p>
-          <strong>DaScH-Lab</strong>
-        </p> #}
+        <small>
+          The following pages contain links to other features, websites and or content belonging to or originating from third parties: by accessing you agree to the terms and conditions of use set forth therein. <strong>DaScH-Lab</strong> and the TLS disclaims any responsibility and recommend that you carefully read the terms and conditions of use set forth.
+        </small>
       </div>
     </footer>
 

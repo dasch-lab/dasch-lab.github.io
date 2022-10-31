@@ -47,17 +47,40 @@ $footer-color: var(--fg-color);
   @import "general/cookiebar";
   @import "general/docs";
   @import "general/slider";
-  
+
   body {
+
     font-family: 'Nunito Sans', sans-serif;
-    
     font-size: 19px;
     color: var(--fg-color);
     background: var(--bg-color);
 
-
-    overflow-x: hidden;
+    &.default {
+      display: flex;
+      // use this if navbar is NOT fixed (default)
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    &.fixed {
+      display: flex;
+      // use this if navbar is fixed
+      min-height: calc(100vh - $navbar-height);
+      flex-direction: column;
+    }
   }
+  
+  // body {
+  //   font-family: 'Nunito Sans', sans-serif;
+    
+  //   font-size: 19px;
+  //   color: var(--fg-color);
+  //   background: var(--bg-color);
+  //   display: flex;
+  //   min-height: calc(100vh - 52px);
+  //   flex-direction: column;
+
+  //   overflow-x: hidden;
+  // }
   
   table.table{
     color: var(--fg-color);
@@ -122,6 +145,10 @@ code{
   color: var(--primary-color);
 }
 
+#wrapper{
+  flex: 1;
+}
+
 /* Hero */
 .hero{
   &.is-primary {
@@ -137,4 +164,12 @@ header.navbar{
 /* Navigation */
 a.navbar-item{
   font-weight: normal;
+}
+
+footer.footer{
+  padding: 1.5rem;
+}
+
+.is-fullheight-100vh{
+  height:100vh;
 }

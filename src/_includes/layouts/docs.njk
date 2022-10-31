@@ -18,15 +18,15 @@ isDocs: true
       </div>
     </aside>
 
-    {% if pageToc %}
-      <div class='docs-toc' id="offside-toc">
-        <div class="docs-content">
-          <strong class='mt-2'>On this page</strong>
-          <hr>
-          {{ pageToc | safe }}
-        </div>
+    {# {% if pageToc %} #}
+    <div class='docs-toc' id="offside-toc">
+      <div class="docs-content">
+        <strong class='mt-2'>On this page</strong>
+        <hr>
+        {{ pageToc | safe }}
       </div>
-      {% endif %}
+    </div>
+      {# {% endif %} #}
 
     <main class='docs-main'>
 
