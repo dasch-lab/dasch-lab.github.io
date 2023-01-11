@@ -39,7 +39,7 @@ It is possible to create animated gif directly from pymol by installing ffmpeg e
 ### Resize series of images
 `convert *.png -resize 70% newname%02d.png`
 
-### Convert mutliple filetype(s) into animated gif
+### Convert multiple filetype(s) into animated gif
 `convert -delay 10 -loop 0 *.png anim.gif`<br>
 `convert -fuzz 1% -delay 1x30 *.png -coalesce -layers OptimizeTransparency animation.gif`<br>
 <br>
@@ -53,4 +53,3 @@ It is possible to create animated gif directly from pymol by installing ffmpeg e
 1. [Pymol support](https://pymol.org/2/support.html)
 2. [Pymol moviemaking](https://pymol.org/tutorials/moviemaking/)
 3. [ImageMagick Convert](http://imagemagick.org/script/convert.php)
-4. Conda environments: <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html>
