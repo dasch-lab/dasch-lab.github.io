@@ -76,4 +76,4 @@ $ sudo reboot
 
 ### Further reading
 
-1. Nvidia Data Center Documentation: <https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#lgi)>
+1. Nvidia Data Center Documentation: <https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#lgi>
