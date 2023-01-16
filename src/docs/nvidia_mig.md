@@ -9,7 +9,7 @@ eleventyNavigation:
 
 The new 'Multi-Instance GPU (MIG)' feature allows GPUs to be partitioned into up to seven separate GPU instances for CUDA applications.
 
-# Supported GPUs
+## Supported GPUs
 
 * H100-SXM5
 * H100-PCIE
@@ -17,7 +17,7 @@ The new 'Multi-Instance GPU (MIG)' feature allows GPUs to be partitioned into up
 * A100-PCIE (40 and 80 GB)
 * A30
 
-# Enable MIG Mode
+## Enable MIG Mode
 
 By default, MIG mode is not enabled on the GPU, so you need to enable it:
 
@@ -28,7 +28,7 @@ $ nvidia-smi -i <GPU IDs> -mig 1
 
 The GPUs can be selected using comma separated GPU indexes. If no GPU ID is specified, then MIG mode is applied to all the GPUs on the system.
 
-# List GPU Instance Profiles
+## List GPU Instance Profiles
 
 Once the MIG mode is activated, the NVIDIA driver provides a number of profiles that users can opt-in for when configuring the MIG feature in A100.
 
@@ -36,7 +36,7 @@ Once the MIG mode is activated, the NVIDIA driver provides a number of profiles 
 $ sudo nvidia-smi mig -lgip
 ```
 
-# Creating GPU Instances
+## Creating GPU Instances
 
 Before starting to use MIG, the user needs to create GPU instances using the `-cgi` option. Once the GPU instances are created, one needs to create the corresponding Compute Instance (CI). By using the `-C` option, `nvidia-smi` creates these instances.
 
@@ -56,7 +56,7 @@ and verify that the GIs and corresponding CIs are created:
 $ nvidia-smi
 ```
 
-# Destroying GPU Instances
+## Destroying GPU Instances
 
 Once the GPU is in MIG mode, GIs and CIs can be configured dynamically. If the intention is to destroy all the CIs and GIs (recommended), then this can be accomplished with the following commands:
 
@@ -74,6 +74,6 @@ $ sudo reboot
 ---
 
 
-## Further reading
+### Further reading
 
 1. Nvidia Data Center Documentation: <https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#lgi)>
