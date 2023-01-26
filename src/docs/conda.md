@@ -51,6 +51,37 @@ $ conda activate bioinfo-notebook
 (bioinfo-notebook) $
 ```
 
+## Environment variables
+To list any variables you may have, run `conda env config vars list`.
+
+To set environment variables, run `conda env config vars set my_var=value`.
+
+Once you have set an environment variable, you have to reactivate your environment: `conda activate test-env`.
+
+To check if the environment variable has been set, run `echo $my_var` or `conda env config vars list`.
+
+When you deactivate your environment, you can use those same commands to see that the environment variable goes away.
+
+You can specify the environment you want to affect using the `-n` and `-p` flags. The `-n` flag allows you to name the environment and `-p` allows you to specify the path to the environment.
+
+To unset the environment variable, run `conda env config vars unset my_var -n test-env`.
+
+Environment variables set using `conda env config vars` will be retained in the output of conda env export. Further, you can declare environment variables in the environment.yml file as shown here:
+
+```
+name: env-name
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - codecov
+variables:
+  VAR1: valueA
+  VAR2: valueB
+```
+  
+
 ## Demonstration
 
 In this video demonstration, a conda virtual environment is created using [bioinfo-notebook.txt](../envs/bioinfo-notebook.txt).
