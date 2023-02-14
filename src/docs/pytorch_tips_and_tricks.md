@@ -37,8 +37,7 @@ We can print the difference using variables:
 
 ## 2) Optimizer step 
 
-Many optimizers keep track of parameters such as an estimate of the first and second moments of the gradient, for each model weight. For the 
-three main optimizers we have:
+Many optimizers keep track of parameters such as an estimate of the first and second moments of the gradient, for each model weight. For the three main optimizers we have:
 
 * Adam: twice the model size (which uses two moments)
 * RMSprop: one times the model size (which uses one moment)
@@ -62,8 +61,7 @@ three main optimizers we have:
 
 ## 4) Asynchronous data transfer
 
-Use `tensor.to(non_blocking=True)` when it’s applicable to overlap data transfers and kernel execution. 
-Essentially, `non_blocking=True` allows asynchronous data transfers to reduce the execution time.
+Use `tensor.to(non_blocking=True)` when it’s applicable to overlap data transfers and kernel execution. Essentially, `non_blocking=True` allows asynchronous data transfers to reduce the execution time.
 
 
 ## 5) Mixed precision
@@ -115,11 +113,7 @@ Let's look at an example that contains points 4), 5), 6) and 7).
 
 ## 8) From array to torch tensor
 
-Use `torch.from_numpy(numpy_array)` and `torch.as_tensor(others)` instead of `torch.tensor`.
-If both the source device and target device are CPU, `torch.from_numpy` and `torch.as_tensor` may not create data copies. 
-If the source data is a NumPy array, it’s faster to use `torch.from_numpy(numpy_array)`. If the source data is a tensor with 
-the same data type and device type, then `torch.as_tensor(others)` may avoid copying data if applicable. `others` can be Python list,
-tuple, or `torch.tensor`. If the source and target device are different, then we can use the next tip.
+Use `torch.from_numpy(numpy_array)` and `torch.as_tensor(others)` instead of `torch.tensor`. If both the source device and target device are CPU, `torch.from_numpy` and `torch.as_tensor` may not create data copies. If the source data is a NumPy array, it’s faster to use `torch.from_numpy(numpy_array)`. If the source data is a tensor with the same data type and device type, then `torch.as_tensor(others)` may avoid copying data if applicable. `others` can be Python list, tuple, or `torch.tensor`. If the source and target device are different, then we can use the next tip.
 
 ~~~
   torch.from_numpy(numpy_array)
@@ -128,10 +122,7 @@ tuple, or `torch.tensor`. If the source and target device are different, then we
 
 ## 9) Set the sizes of all different architectural designs and batch sizes as the multiples of 8
 
-To maximize the computation efficiency of GPU, it’s the best to ensure different architecture designs (including the input and 
-output size/dimension/channel numbers of neural networks and batch size) are the multiples of 8 or even larger powers of two 
-(e.g., 64, 128 and up to 256). It’s because the Tensor Cores of Nvidia GPUs achieve the best performance for matrix multiplication 
-when the matrix dimensions align to the multiples of powers of two. 
+To maximize the computation efficiency of GPU, it’s the best to ensure different architecture designs (including the input and output size/dimension/channel numbers of neural networks and batch size) are the multiples of 8 or even larger powers of two (e.g., 64, 128 and up to 256). It’s because the Tensor Cores of Nvidia GPUs achieve the best performance for matrix multiplication when the matrix dimensions align to the multiples of powers of two. 
 
 ## 10) Setting `torch.backends.cudnn.benchmark = True`
 
