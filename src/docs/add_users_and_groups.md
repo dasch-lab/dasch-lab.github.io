@@ -52,7 +52,7 @@ $ sudo chmod 775 groupname/
 ## Detailed Explanation
 - User Ownership Change: The specified username will become the owner of the directory. The owner has certain permissions over the directory, which typically include the ability to read, write, and execute (depending on the directory's permissions).
 - Group Ownership Change: The specified groupname will become the group associated with the directory. Group members can have their own set of permissions over the directory, separate from those of the owner and others.
-- 
+
 ```bash
 $ sudo chown username:groupname dirname
 ```
