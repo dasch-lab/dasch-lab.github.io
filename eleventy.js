@@ -94,6 +94,7 @@ module.exports = function (eleventyConfig) {
 	});
 
   eleventyConfig.addCollection("docsFeed", function(collection) {
+		
 		return collection.getFilteredByGlob("src/docs/**/*.md").sort((a, b) => {
 			return b.date - a.date; // sort by date - descending
 		});
