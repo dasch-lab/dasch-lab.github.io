@@ -13,20 +13,30 @@ Conda is a package manager allows specific versions of programs to be installed,
 Different sets of programs can be installed to different [virtual environments](https://www.anaconda.com/moving-conda-environments/).
 A virtual environment is basically a set of programs.
 
-## Installing `conda`
+## Installing `conda` globally
 
 Conda is part of [Anaconda](https://www.anaconda.com/distribution/), which is available for free.
 Conda is also available through [Miniconda](https://docs.conda.io/en/latest/miniconda.html), a free minimal installer for conda.
+
+First of all, remove old version if you have it:
+
+```bash
+$ sudo rm -rf /opt/miniconda3/
+```
 
 Conda can be installed on a 64-bit Linux system with the following commands...
 
 ```bash
 # Downloading miniconda
-$ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 # Installing miniconda
-$ bash miniconda.sh -b -p $HOME/miniconda
+$ sudo bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3
 # Updating conda
 $ conda update -q conda
+# Add permission to a group if needed
+$ sudo chgrp -R group_name /opt/miniconda3/
+$ sudo chmod -R g+rwX /opt/miniconda3
+$ sudo find /opt/miniconda3 -type d -exec chmod g+s {} +
 ```
 
 ## Cloning and activating a `conda` environment
